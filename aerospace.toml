@@ -168,25 +168,37 @@ cmd-shift-l = ['join-with right', 'mode main']
 [[on-window-detected]]
 if.app-id = "com.amazon.Amazon-Chime"
 run = "move-node-to-workspace 3"
-#
-# 2408 | com.github.th-ch.youtube-music    | YouTube Music
-# 2412 | org.whispersystems.signal-desktop | Signal
-# 2413 | com.amazon.Amazon-Chime           | Amazon Chime
-# 2414 | com.tinyspeck.slackmacgap         | Slack
-# 2415 | com.googlecode.iterm2             | iTerm2
-# 2416 | com.apple.Preview                 | Preview
-# 2418 | com.broadsoft.communicator        | Amazon UC Ora Client
 
 [[on-window-detected]]
+# Amazon UC Ora Client
 if.app-id = "com.broadsoft.communicator"
-run = "move-node-to-workspace 3"
+check-further-callbacks = true
+run = ["layout floating","move-node-to-workspace 3"]
 
 [[on-window-detected]]
-if.app-id = "Signal"
+if.app-id = "org.whispersystems.signal-desktop"
 run = "move-node-to-workspace 3"
 
-
+# can't actually find persist's app id...
 [[on-window-detected]]
-if.app-id = "Amazon Persist"
+if.app-id = "Amazon Persist.app"
 run = "move-node-to-workspace 5"
 
+[[on-window-detected]]
+if.app-id = "com.github.th-ch.youtube-music"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "com.apple.Preview"
+run = "layout floating"
+
+# f%^&* doesn't work.. because aerospace doesn't support moving to monitors in
+# app rules.
+
+# [[on-window-detected]]
+# if.app-id = "com.tinyspeck.slackmacgap"
+# run = "move-node-to-monitor secondary"
+#
+# [[on-window-detected]]
+# if.app-id = "com.microsoft.Outlook"
+# run = "move-node-to-monitor secondary"
